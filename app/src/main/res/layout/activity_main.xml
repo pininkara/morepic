@@ -9,14 +9,14 @@
 
     <EditText
         android:id="@+id/tag_edit"
-        android:inputType="text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:hint="TAG"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <Button
@@ -30,36 +30,59 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tag_edit" />
 
-    <EditText
-        android:id="@+id/num_edit"
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="检索的图片数量"
-        android:inputType="number"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tag_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/tag_btn">
+
+        <EditText
+            android:id="@+id/start_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="起始页码"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/end_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="终止页码"
+            android:inputType="number" />
+
+
+    </LinearLayout>
+
 
     <EditText
         android:id="@+id/factor_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:hint="质量因子"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/num_edit" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <EditText
         android:id="@+id/sub_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:inputType="text"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:hint="子目录名"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,9 +94,10 @@
         android:layout_height="wrap_content"
         android:text="注释：\n
         1.TAG请核对后添加，TAG错误会导致无结果，一次只能添加一个TAG，可以多次添加\n
-        2.检索的图片数量会乘以40，即输入1检索40张图片，最大不要超过10，默认为1\n
+        2.每页40张图，一次最多10页，默认从1开始、2停止，页数越多等待时间越长\n
         3.质量因子默认为100，调节范围为50~500，越大图片越涩，检索出的数量越少\n
-        4.保存在Download/morePic下，每次检索会自动创建一个文件夹，文件夹名为子目录名，默认为当前时间戳
+        4.保存在Pictures/morePic下，每次检索会自动创建一个文件夹，文件夹名为子目录名，默认为当前时间戳\n
+        5.网络错误会导致闪退，呜呜呜别骂了在修了
 "
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,6 +114,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/exit_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="88dp"
+        android:text="退出"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
